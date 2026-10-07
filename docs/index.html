@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <title>X 账号数据存档</title>
 </head>
+
+<script>
+  // 页面加载后自动循环清理 Sessions 菜单
+  const hideSessions = setInterval(() => {
+    document.querySelectorAll('a, li, div').forEach(el => {
+      if (el.textContent.trim().toLowerCase() === 'sessions' || 
+          el.getAttribute('href')?.includes('sessions')) {
+        el.style.display = 'none';
+        el.remove();
+      }
+    });
+  }, 100);
+  // 5秒后停止清理，节省性能
+  setTimeout(() => clearInterval(hideSessions), 5000);
+</script>
+
 <body>
     <h1>X 账号数据存档导航</h1>
     <ul>
