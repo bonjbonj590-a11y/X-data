@@ -30,7 +30,7 @@
             background: transparent; 
         }
 
-        /* ==================== 3. 顶端大标题（抬头）样式 ==================== */
+        /* 3. 顶端大标题（抬头）样式 */
         .page-header {
             max-width: 500px;
             width: 100%;
@@ -83,19 +83,13 @@
             gap: 10px; 
         }
 
-        /* 7. 统一图片和视频的尺寸、圆角 */
-        .tweet-media img,
-        .tweet-media video {
+        /* 7. 统一图片样式（含点击放大指针） */
+        .tweet-media img {
             width: 100%;       
             height: auto;      
             border-radius: 12px; 
             display: block;    
             object-fit: cover;
-            background-color: #000; 
-        }
-
-        /* 8. 图片悬停放大镜指针提示 */
-        .tweet-media img {
             cursor: zoom-in;
             transition: opacity 0.2s;
         }
@@ -103,7 +97,19 @@
             opacity: 0.9;
         }
 
-        /* ==================== 9. 全屏弹窗大图预览样式 ==================== */
+        /* 8. 严格限制视频尺寸（防止视频太大撑破页面） */
+        .tweet-media video {
+            width: 100% !important;       /* 宽度占满卡片 */
+            max-width: 100% !important;   /* 绝不超出卡片范围 */
+            height: auto !important;      /* 高度自适应 */
+            max-height: 450px !important; /* 限制最大高度，避免视频过长 */
+            border-radius: 12px; 
+            display: block;    
+            background-color: #000;       /* 视频加载前的黑底 */
+            object-fit: contain;          /* 保证视频内容完整显示不变形 */
+        }
+
+        /* 9. 全屏弹窗大图预览样式 */
         #image-modal {
             display: none; /* 默认隐藏 */
             position: fixed;
@@ -133,6 +139,7 @@
         <p>收集并公开相关证据，打击违法网络行为</p>
     </div>
 
+   
     <!-- ==================== 第一条推文 ==================== -->
     <div class="tweet-card">
         <div class="tweet-text">
@@ -192,7 +199,6 @@
             <video src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data@main/docs/newx/media/1.mp4" controls playsinline></video>
         </div>
     </div>
-
 
     <!-- ==================== 全屏预览弹窗容器 ==================== -->
     <div id="image-modal" onclick="closeModal()">
