@@ -1,38 +1,140 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>揭露假人设网络杀猪盘女骗子导航</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>离线推文流展示</title>
+    <style>
+        /* 1. 页面整体背景和居中，纵向排列 */
+        body {
+            background-color: #f7f9f9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column; /* 让所有卡片从上到下纵向排列 */
+            align-items: center;    /* 整体居中 */
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            gap: 16px; /* 每条推文卡片之间的上下间距 */
+        }
+
+        /* 2. 自定义美化滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px; /* 滚动条宽度 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1; /* 滚动条滑块颜色 */
+            border-radius: 4px; /* 滑块圆角 */
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; /* 滚动条轨道背景透明 */
+        }
+
+        /* 3. 单个推文卡片样式 */
+        .tweet-card {
+            background: #ffffff;
+            border: 1px solid #cfd9de;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 100%;
+            padding: 16px;
+            box-sizing: border-box;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* 4. 推文文字样式 */
+        .tweet-text {
+            font-size: 15px;
+            color: #0f1414;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            word-break: break-all;
+        }
+
+        /* 5. 媒体容器：控制图片和视频严格竖向排列 */
+        .tweet-media {
+            display: flex;
+            flex-direction: column; /* 核心：从上到下竖着排 */
+            gap: 10px; /* 媒体与媒体之间的上下间距 */
+        }
+
+        /* 6. 统一图片和视频的尺寸、圆角与脱机显示效果 */
+        .tweet-media img,
+        .tweet-media video {
+            width: 100%;       
+            height: auto;      
+            border-radius: 12px; 
+            display: block;    
+            object-fit: cover;
+            background-color: #000; /* 视频加载前的背景色 */
+        }
+    </style>
 </head>
-
-
-
 <body>
-    <h1>揭露假人设网络骗子导航</h1>
-    <ul>
-        
-		<li><a href="./jbcxr10/Your%20archive.html#/tweets/tweets">jbcxr10</a></li>
-		
-		<li><a href="./xykj202507/Your%20archive.html#/tweets/tweets">xykj202507</a></li>
-		
-		<li><a href="./xykj202506/Your%20archive.html#/tweets/tweets">xykj202506</a></li>
-		
-        <li><a href="./xykj2s02c50h5/Your%20archive.html#/tweets/tweets">xykj202505</a></li>
-		
-		<li><a href="./xykj202503/Your%20archive.html#/tweets/tweets">xykj202503</a></li>
-		<li><a href="./maggiq5/Your%20archive.html#/tweets/tweets">maggiq5</a></li>
-		
-		<li><a href="./laoli20/Your%20archive.html#/tweets/tweets">laoli20</a></li>
-		<li><a href="./bonjbonj590/Your%20archive.html#/tweets/tweets">bonjbonj590</a></li>
-		
-	    <li><a href="./ruguorugep/Your%20archive.html#/tweets/tweets">ruguorugep</a></li>
-		
-	    <li><a href="./xiaojudanp/Your%20archive.html#/tweets/tweets">xiaojudanp</a></li>
-		
-		<li><a href="./zhishang661/Your%20archive.html#/tweets/tweets">zhishang661</a></li>
-		
-		<li><a href="./emmamyg/Your%20archive.html#/tweets/tweets">emmamyg</a></li>
-		
-    </ul>
+
+    <!-- ==================== 第一条推文 ==================== -->
+    <div class="tweet-card">
+        <div class="tweet-text">
+            肉跪茹露逼食物盗图从来没有远景 
+说明了什么😅
+一贯的虚构高大上生活话术 🤡
+用平民连锁牛排店Hawksmoor
+当作私宴背景 
+用街头常见剧组拍戏营造氛围感 
+最后还要强插一张不相干的
+马卡龙摆拍图 
+因为细节漏洞百出 
+反而成了典型的穿帮笑话🤡
+        </div>
+        <div class="tweet-media">
+            <img src="image1.jpg" alt="图片1">
+			
+			<img src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data/docs/news/media/1.png" alt="海报">
+            <video src="video1.mp4" controls playsinline></video>
+        </div>
+    </div>
+
+    <!-- ==================== 第二条推文 ==================== -->
+    <div class="tweet-card">
+        <div class="tweet-text">
+            茹露逼剧本又穿帮
+😂拿着国内对Mini的 
+轻奢滤镜 
+套英国生活  
+把平民代步车 
+硬捧成小钢炮  
+又把新手云女儿 
+导致的暴涨保费 
+归咎于车  
+彻底暴露了 
+没有英国实际用车经验的假人设
+        </div>
+        <div class="tweet-media">
+            <img src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data/docs/news/media/2.png" alt="图片2">
+            <img src="image3.jpg" alt="图片3">
+        </div>
+    </div>
+
+    <!-- ==================== 第三条推文 ==================== -->
+    <div class="tweet-card">
+        <div class="tweet-text">
+            😀茹露逼录音揭示其无儿无女
+说话结结巴巴 
+说明在撒谎 
+其称接送17岁女儿 
+算工钱不划算 
+完全违背为人父母情感常理  
+国内外该年龄段孩子 
+均能独立出行 
+英国满17岁可考驾照无需接送  
+剧情忽略英国学校严规 
+足见其缺乏真实育儿体验 
+纯属无儿无女凭空瞎编
+        </div>
+        <div class="tweet-media">
+            <video src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data/docs/news/media/2.png" controls playsinline></video>
+        </div>
+    </div>
+
 </body>
 </html>
