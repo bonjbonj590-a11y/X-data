@@ -74,6 +74,11 @@
             line-height: 1.5;
             margin-bottom: 12px;
             word-break: break-all;
+            white-space: pre-line; /* 保持换行格式 */
+        }
+
+        .tweet-text p {
+            margin: 6px 0;
         }
 
         /* 6. 媒体容器：控制图片和视频严格竖向排列 */
@@ -85,7 +90,7 @@
 
         /* 7. 统一图片样式（含点击放大指针） */
         .tweet-media img {
-            width: 100%;       
+            width: 100%;        
             height: auto;      
             border-radius: 12px; 
             display: block;    
@@ -97,27 +102,27 @@
             opacity: 0.9;
         }
 
-        /* 8. 严格限制视频尺寸（防止视频太大撑破页面） */
+        /* 8. 严格限制视频尺寸 */
         .tweet-media video {
-            width: 100% !important;       /* 宽度占满卡片 */
-            max-width: 100% !important;   /* 绝不超出卡片范围 */
-            height: auto !important;      /* 高度自适应 */
-            max-height: 450px !important; /* 限制最大高度，避免视频过长 */
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+            max-height: 450px !important;
             border-radius: 12px; 
             display: block;    
-            background-color: #000;       /* 视频加载前的黑底 */
-            object-fit: contain;          /* 保证视频内容完整显示不变形 */
+            background-color: #000;
+            object-fit: contain;
         }
 
         /* 9. 全屏弹窗大图预览样式 */
         #image-modal {
-            display: none; /* 默认隐藏 */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.85); /* 半透明黑色背景 */
+            background-color: rgba(0, 0, 0, 0.85);
             z-index: 9999;
             justify-content: center;
             align-items: center;
@@ -139,32 +144,30 @@
         <p>收集并公开相关证据，打击违法网络行为</p>
     </div>
      
-	 
-	     <!-- ==================== 第一条推文 ==================== -->
+    <!-- ==================== 第1条推文 ==================== -->
     <div class="tweet-card">
         <div class="tweet-text">
- 假人设骗子黄推假币茹露逼杀猪盘主要大小号 东南亚杀猪盘盗图云旅游诈骗骗粉男网友攻击女网友
- 
+假人设骗子黄推假币茹露逼杀猪盘主要大小号 东南亚杀猪盘盗图云旅游骗粉诈骗男网友攻击女网友
+
 <p>用户 naomiruguoruge 的唯一代码是：<a href="https://x.com/i/user/1490381387958034436" target="_blank">https://x.com/i/user/1490381387958034436</a></p>
-    <p>用户 rugeyinyue 的唯一代码是：<a href="https://x.com/i/user/1867469778295595009" target="_blank">https://x.com/i/user/1867469778295595009</a></p>
-    <p>用户 ruguoruge 的唯一代码是：<a href="https://x.com/i/user/1715581259357749248" target="_blank">https://x.com/i/user/1715581259357749248</a></p>
-    <p>用户 naomiruge 的唯一代码是：<a href="https://x.com/i/user/1945666341568167936" target="_blank">https://x.com/i/user/1945666341568167936</a></p>
-    <p>用户 x5373809759419 的唯一代码是：<a href="https://x.com/i/user/1736014855335714816" target="_blank">https://x.com/i/user/1736014855335714816</a></p>
-    <p>用户 zhangchunhui_ 的唯一代码是：<a href="https://x.com/i/user/1833695521682137089" target="_blank">https://x.com/i/user/1833695521682137089</a></p>
-    <p>用户 beifengzihan 的唯一代码是：<a href="https://x.com/i/user/1812265712330620928" target="_blank">https://x.com/i/user/1812265712330620928</a></p>
-    <p>用户 joseph2025xxx 的唯一代码是：<a href="https://x.com/i/user/1837588592266248192" target="_blank">https://x.com/i/user/1837588592266248192</a></p>
-    <p>用户 amanda_8632 的唯一代码是：<a href="https://x.com/i/user/1492552727905411073" target="_blank">https://x.com/i/user/1492552727905411073</a></p>
+<p>用户 rugeyinyue 的唯一代码是：<a href="https://x.com/i/user/1867469778295595009" target="_blank">https://x.com/i/user/1867469778295595009</a></p>
+<p>用户 ruguoruge 的唯一代码是：<a href="https://x.com/i/user/1715581259357749248" target="_blank">https://x.com/i/user/1715581259357749248</a></p>
+<p>用户 naomiruge 的唯一代码是：<a href="https://x.com/i/user/1945666341568167936" target="_blank">https://x.com/i/user/1945666341568167936</a></p>
+<p>用户 x5373809759419 的唯一代码是：<a href="https://x.com/i/user/1736014855335714816" target="_blank">https://x.com/i/user/1736014855335714816</a></p>
+<p>用户 zhangchunhui_ 的唯一代码是：<a href="https://x.com/i/user/1833695521682137089" target="_blank">https://x.com/i/user/1833695521682137089</a></p>
+<p>用户 beifengzihan 的唯一代码是：<a href="https://x.com/i/user/1812265712330620928" target="_blank">https://x.com/i/user/1812265712330620928</a></p>
+<p>用户 joseph2025xxx 的唯一代码是：<a href="https://x.com/i/user/1837588592266248192" target="_blank">https://x.com/i/user/1837588592266248192</a></p>
+<p>用户 amanda_8632 的唯一代码是：<a href="https://x.com/i/user/1492552727905411073" target="_blank">https://x.com/i/user/1492552727905411073</a></p>
         </div>
         
         <div class="tweet-media">
             <video src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data@main/docs/bonjbonj/data/tweets_media/1871356911972667725-vAuqogMux3H95w_l.mp4" controls playsinline></video>
         </div>
     </div>
-	 
-    <!-- ==================== 第一条推文 ==================== -->
+     
+    <!-- ==================== 第2条推文 ==================== -->
     <div class="tweet-card">
         <div class="tweet-text">
-                       
 🤡假人设骗子换妻肉跪茹露比
 被指出破绽后无力用事实反驳
 只能迅速启动精神胜利法
@@ -177,16 +180,13 @@
 从不靠贬低他人维护自尊
         </div>
         <div class="tweet-media">
-            <!-- 替换为你实际的 GitHub CDN 链接 -->
             <img src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data@main/docs/newx/media/5.png" alt="证据图片">
-           
         </div>
     </div>
     
-    <!-- ==================== 第一条推文 ==================== -->
+    <!-- ==================== 第3条推文 ==================== -->
     <div class="tweet-card">
         <div class="tweet-text">
-                      
 🤡
 假人设换妻肉跪茹露逼
 连美国凤姐也不会嫉妒你
@@ -206,16 +206,14 @@
 黄推假币沙猪盘骗你没商量
         </div>
         <div class="tweet-media">
-            <!-- 替换为你实际的 GitHub CDN 链接 -->
             <img src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data@main/docs/newx/media/6.png" alt="证据图片">
-            
         </div>
     </div>
 
-    <!-- ==================== 第一条推文 ==================== -->
+    <!-- ==================== 第4条推文 ==================== -->
     <div class="tweet-card">
         <div class="tweet-text">
-                    😇
+😇
 假人设骗子换妻
 肉跪骗子茹露比
 油炸乳鸽嘴巴硬
@@ -235,17 +233,14 @@ C位被人当猴耍
 B圈奇葩你最骚
         </div>
         <div class="tweet-media">
-            <!-- 替换为你实际的 GitHub CDN 链接 -->
             <img src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data@main/docs/newx/media/4.png" alt="证据图片">
-             
         </div>
     </div>
 
-   
-    <!-- ==================== 第一条推文 ==================== -->
+    <!-- ==================== 第5条推文 ==================== -->
     <div class="tweet-card">
         <div class="tweet-text">
-                       肉跪茹露逼食物盗图从来没有远景 
+肉跪茹露逼食物盗图从来没有远景 
 说明了什么😅
 一贯的虚构高大上生活话术 🤡
 用平民连锁牛排店Hawksmoor
@@ -257,15 +252,15 @@ B圈奇葩你最骚
 反而成了典型的穿帮笑话🤡
         </div>
         <div class="tweet-media">
-            <!-- 替换为你实际的 GitHub CDN 链接 -->
             <img src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data@main/docs/newx/media/1.png" alt="证据图片">
-             <img src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data@main/docs/newx/media/3.png" alt="图片2">
+            <img src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data@main/docs/newx/media/3.png" alt="图片2">
         </div>
     </div>
 
-    <!-- ==================== 第二条推文 ==================== -->
+    <!-- ==================== 第6条推文 ==================== -->
     <div class="tweet-card">
-        <div class="tweet-text"> 茹露逼剧本又穿帮
+        <div class="tweet-text">
+茹露逼剧本又穿帮
 😂拿着国内对Mini的 
 轻奢滤镜 
 套英国生活  
@@ -281,10 +276,11 @@ B圈奇葩你最骚
             <img src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data@main/docs/newx/media/2.png" alt="证据图片2">
         </div>
     </div>
- <!-- ==================== 第三条推文 ==================== -->
+
+    <!-- ==================== 第7条推文 ==================== -->
     <div class="tweet-card">
         <div class="tweet-text">
-            😀茹露逼录音揭示其无儿无女
+😀茹露逼录音揭示其无儿无女
 说话结结巴巴 
 说明在撒谎 
 其称接送17岁女儿 
