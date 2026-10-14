@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>离线推文流展示</title>
+    <title>茹露逼2026云回国全揭露 - 离线推文流展示</title>
     <style>
         /* 1. 页面整体背景和居中，纵向排列 */
         body {
@@ -18,7 +19,20 @@
             gap: 16px; /* 每条推文卡片之间的上下间距 */
         }
 
-        /* 2. 自定义美化滚动条样式 */
+        /* 2. 页面顶端抬头标题样式（50号字） */
+        .page-header-title {
+            font-size: 50px;
+            font-weight: 800;
+            color: #78350f;
+            text-align: center;
+            margin: 10px 0 10px 0;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            max-width: 600px;
+            word-break: break-word;
+        }
+
+        /* 3. 自定义美化滚动条样式 */
         ::-webkit-scrollbar {
             width: 8px; /* 滚动条宽度 */
         }
@@ -30,7 +44,7 @@
             background: transparent; /* 滚动条轨道背景透明 */
         }
 
-        /* 3. 单个推文卡片样式 */
+        /* 4. 单个推文卡片样式 */
         .tweet-card {
             background: #ffffff;
             border: 1px solid #cfd9de;
@@ -42,40 +56,51 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        /* 4. 推文文字样式 */
+        /* 5. 推文文字样式 */
         .tweet-text {
             font-size: 15px;
             color: #0f1414;
             line-height: 1.5;
             margin-bottom: 12px;
             word-break: break-all;
+            white-space: pre-line; /* 保持自动换行格式 */
         }
 
-        /* 5. 媒体容器：控制图片和视频严格竖向排列 */
+        /* 6. 媒体容器：控制图片和视频严格竖向排列 */
         .tweet-media {
             display: flex;
             flex-direction: column; /* 核心：从上到下竖着排 */
             gap: 10px; /* 媒体与媒体之间的上下间距 */
         }
 
-        /* 6. 统一图片和视频的尺寸、圆角与脱机显示效果 */
+        /* 7. 统一图片和视频的尺寸、圆角与脱机显示效果 */
         .tweet-media img,
         .tweet-media video {
-            width: 100%;       
-            height: auto;      
+            width: 100%;        
+            height: auto;       
             border-radius: 12px; 
-            display: block;    
+            display: block;     
             object-fit: cover;
             background-color: #000; /* 视频加载前的背景色 */
+        }
+
+        /* 8. 手机端自适应，避免50号字太宽超屏 */
+        @media (max-width: 600px) {
+            .page-header-title {
+                font-size: 32px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- ==================== 50号字抬头标题 ==================== -->
+    <h1 class="page-header-title">茹露逼2026云回国全揭露</h1>
+
     <!-- ==================== 第一条推文 ==================== -->
     <div class="tweet-card">
         <div class="tweet-text">
-            肉跪茹露逼食物盗图从来没有远景 
+肉跪茹露逼食物盗图从来没有远景 
 说明了什么😅
 一贯的虚构高大上生活话术 🤡
 用平民连锁牛排店Hawksmoor
@@ -88,16 +113,14 @@
         </div>
         <div class="tweet-media">
             <img src="image1.jpg" alt="图片1">
-			
-			<img src="" alt="海报">
-          
+            <img src="" alt="海报">
         </div>
     </div>
 
     <!-- ==================== 第二条推文 ==================== -->
     <div class="tweet-card">
         <div class="tweet-text">
-            茹露逼剧本又穿帮
+茹露逼剧本又穿帮
 😂拿着国内对Mini的 
 轻奢滤镜 
 套英国生活  
@@ -118,7 +141,7 @@
     <!-- ==================== 第三条推文 ==================== -->
     <div class="tweet-card">
         <div class="tweet-text">
-            😀茹露逼录音揭示其无儿无女
+😀茹露逼录音揭示其无儿无女
 说话结结巴巴 
 说明在撒谎 
 其称接送17岁女儿 

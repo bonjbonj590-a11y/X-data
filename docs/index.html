@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -5,17 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>揭露假人设网络杀猪盘女骗子导航</title>
 
-    <!-- ==================== 推特 / X 链接预览 Meta 标签 ==================== -->
+    <!-- 推特 / X 链接预览 Meta 标签 -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="揭露假人设网络杀猪盘女骗子导航">
     <meta name="twitter:description" content="收集并公开相关证据，揭露假人设网络杀猪盘与违法网暴行为。">
-    <!-- 请将下方图片链接替换为您制作好的 1200x675 像素标准封面图 -->
     <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data@main/docs/newx/media/cover.png">
 
     <style>
-        /* 1. 整体页面设置：浅黄色背景，居中布局 */
+        /* 1. 整体页面背景与布局 */
         body {
-            background-color: #fffde7; /* 舒适浅黄背景 */
+            background-color: #fffde7;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             margin: 0;
             padding: 30px 15px;
@@ -26,13 +26,12 @@
             box-sizing: border-box;
         }
 
-        /* 2. 头部区域容器 */
+        /* 2. 头部区域 */
         .header-container {
             text-align: center;
             margin-bottom: 24px;
         }
 
-        /* 主标题（放大至40px） */
         .main-title {
             color: #78350f;
             font-size: 40px;
@@ -42,7 +41,6 @@
             line-height: 1.25;
         }
 
-        /* 副标题（放大至28px） */
         .sub-title {
             color: #92400e;
             font-size: 28px;
@@ -51,64 +49,71 @@
             opacity: 0.9;
         }
 
-        /* 3. 导航表格容器样式 */
+        /* 3. 导航卡片外层容器 */
         .nav-table-container {
             width: 100%;
             max-width: 850px;
             background: #ffffff;
-            border-radius: 12px;
-            padding: 12px;
-            box-shadow: 0 4px 12px rgba(180, 83, 9, 0.08);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 4px 16px rgba(180, 83, 9, 0.1);
             border: 1px solid #fef08a;
+            box-sizing: border-box;
         }
 
-        /* 4. 表格主体与每行4列设置 */
+        /* 4. 表格总体排版 */
         .nav-table {
             width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
+            border-collapse: separate;
+            border-spacing: 10px; /* 控制框与框之间的缝隙 */
         }
 
         .nav-table td {
-            padding: 8px;
+            padding: 0;
             text-align: center;
             vertical-align: middle;
+            width: 25%; /* 每列等宽 25% */
         }
 
-        /* 第一行主要链接占满一行（跨列显示） */
+        /* 第一行主要链接跨4列 */
         .nav-table .featured-cell {
-            padding: 12px 8px 16px 8px;
+            width: 100%;
         }
 
-        /* 5. 按钮卡片与超链接样式（框框内的字大2号） */
+        /* 5. 按钮（黄色小框）样式优化 */
         .nav-link {
-            display: block;
-            padding: 14px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 12px 6px;
             background-color: #fef9c3;
             color: #854d0e;
             text-decoration: none;
             font-weight: 700;
-            font-size: 18px; /* 普通框框字号放大至 18px */
-            border-radius: 8px;
+            font-size: 18px;
+            border-radius: 10px;
             border: 1px solid #fef08a;
             transition: all 0.2s ease-in-out;
             word-break: break-all;
+            box-sizing: border-box;
         }
 
         .nav-link:hover {
             background-color: #fef08a;
             color: #713f12;
             transform: translateY(-2px);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
         }
 
-        /* 强调突出第一个主要链接 */
+        /* 第一行置顶大按钮 */
         .featured-link {
             background-color: #fde047;
             color: #713f12;
-            font-size: 20px; /* 置顶框框字号放大至 20px */
+            font-size: 20px;
             border-color: #facc15;
-            padding: 16px 14px;
+            min-height: 60px;
+            padding: 14px;
         }
 
         .featured-link:hover {
@@ -116,25 +121,50 @@
             color: #ffffff;
         }
 
-        /* 6. 响应式适配：手机等小屏幕上自适应调节 */
-        @media (max-width: 600px) {
-            .nav-table td {
-                display: inline-block;
-                width: 50%;
-                box-sizing: border-box;
+        /* 6. 移动端响应式适配 */
+        @media (max-width: 650px) {
+            .nav-table {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                border-spacing: 0;
             }
-            .nav-table td.featured-cell {
+
+            .nav-table tbody {
                 width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
             }
+
+            .nav-table tr {
+                display: flex;
+                width: 100%;
+                gap: 10px;
+            }
+
+            .nav-table td {
+                flex: 1;
+                min-width: calc(50% - 5px); /* 手机端一排两个，完美铺满 */
+            }
+
+            .nav-table td.featured-cell {
+                min-width: 100%;
+            }
+
             .main-title {
-                font-size: 28px; /* 手机屏自适应调节 */
+                font-size: 28px;
             }
+
             .sub-title {
                 font-size: 20px;
             }
+
             .nav-link {
                 font-size: 16px;
+                min-height: 48px;
             }
+
             .featured-link {
                 font-size: 18px;
             }
@@ -143,17 +173,15 @@
 </head>
 <body>
 
-    <!-- 头部：大标题与副标题 -->
     <div class="header-container">
         <h1 class="main-title">揭露假人设网络骗子导航</h1>
         <p class="sub-title">收集证据 · 打击违法行为</p>
     </div>
 
-    <!-- 导航表格 -->
     <div class="nav-table-container">
         <table class="nav-table">
             <tbody>
-                <!-- 第 1 行：主要文章链接（横跨 4 列显示） -->
+                <!-- 第 1 行：主要文章链接 -->
                 <tr>
                     <td colspan="4" class="featured-cell">
                         <a href="./newx/index.html" class="nav-link featured-link">
@@ -162,7 +190,7 @@
                     </td>
                 </tr>
 
-                <!-- 第 2 行（每行 4 列） -->
+                <!-- 第 2 行 -->
                 <tr>
                     <td><a href="./mira/Your%20archive.html#/tweets/tweets" class="nav-link">mira</a></td>
                     <td><a href="./cxr10/Your%20archive.html#/tweets/tweets" class="nav-link">cxr10</a></td>
@@ -170,7 +198,7 @@
                     <td><a href="./202506/Your%20archive.html#/tweets/tweets" class="nav-link">202506</a></td>
                 </tr>
 
-                <!-- 第 3 行（每行 4 列） -->
+                <!-- 第 3 行 -->
                 <tr>
                     <td><a href="./202505/Your%20archive.html#/tweets/tweets" class="nav-link">202505</a></td>
                     <td><a href="./202503/Your%20archive.html#/tweets/tweets" class="nav-link">x202503</a></td>
@@ -178,7 +206,7 @@
                     <td><a href="./magi/Your%20archive.html#/tweets/tweets" class="nav-link">magi</a></td>
                 </tr>
 
-                <!-- 第 4 行（每行 4 列） -->
+                <!-- 第 4 行 -->
                 <tr>
                     <td><a href="./laoli/Your%20archive.html#/tweets/tweets" class="nav-link">laoli</a></td>
                     <td><a href="./bonjbonj/Your%20archive.html#/tweets/tweets" class="nav-link">bonj</a></td>
@@ -186,13 +214,19 @@
                     <td><a href="./jielurulubixj/Your%20archive.html#/tweets/tweets" class="nav-link">jielurulubixj</a></td>
                 </tr>
 
-                <!-- 第 5 行（每行 4 列，不足4个自动留空） -->
+                <!-- 第 5 行（保留实际有内容的单元格） -->
                 <tr>
                     <td><a href="./zhishang/Your%20archive.html#/tweets/tweets" class="nav-link">zhishang</a></td>
                     <td><a href="./emma/Your%20archive.html#/tweets/tweets" class="nav-link">emma</a></td>
 					<td><a href="./feni/Your%20archive.html#/tweets/tweets" class="nav-link">feni</a></td>
-                    <td></td>
-                    <td></td>
+				
+					  <td colspan="4" class="featured-cell">
+                        <a href="./newx/1index.html" class="nav-link featured-link">
+                            揭露茹露逼云回国
+                        </a>
+                    </td>
+					
+					
                 </tr>
             </tbody>
         </table>
