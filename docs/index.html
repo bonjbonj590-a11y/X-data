@@ -71,10 +71,10 @@
             padding: 0;
             text-align: center;
             vertical-align: middle;
-            width: 25%; /* 每列等宽 25% */
+            width: 50%; /* 改为每列等宽 50%（两列布局） */
         }
 
-        /* 第一行及全宽单元格跨4列 */
+        /* 第一行及全宽单元格跨2列 */
         .nav-table .featured-cell {
             width: 100%;
         }
@@ -176,7 +176,7 @@
 
             .nav-table td {
                 flex: 1;
-                min-width: calc(50% - 5px); /* 手机端一排两个，完美铺满 */
+                min-width: calc(50% - 5px); /* 手机端保持一排两个 */
             }
 
             .nav-table td.featured-cell {
@@ -201,7 +201,7 @@
             }
 
             .banner-link {
-                width: 90%; /* 手机屏自适应调节宽度，避免太窄 */
+                width: 90%;
             }
         }
     </style>
@@ -218,9 +218,9 @@
     <div class="nav-table-container">
         <table class="nav-table">
             <tbody>
-                <!-- 第 1 行：主要文章链接 -->
+                <!-- 第 1 行：主要文章链接（跨2列） -->
                 <tr>
-                    <td colspan="4" class="featured-cell">
+                    <td colspan="2" class="featured-cell">
                         <a href="./newx/index.html" class="nav-link featured-link">
                             揭露网络骗子假人设造假敲诈勒索网暴违法犯罪
                         </a>
@@ -231,37 +231,53 @@
                 <tr>
                     <td><a href="./mira/Your%20archive.html#/tweets/tweets" class="nav-link">mira</a></td>
                     <td><a href="./cxr10/Your%20archive.html#/tweets/tweets" class="nav-link">cxr10</a></td>
-                    <td><a href="./202507/Your%20archive.html#/tweets/tweets" class="nav-link">202507</a></td>
-                    <td><a href="./202506/Your%20archive.html#/tweets/tweets" class="nav-link">202506</a></td>
                 </tr>
 
                 <!-- 第 3 行 -->
                 <tr>
-                    <td><a href="./202505/Your%20archive.html#/tweets/tweets" class="nav-link">202505</a></td>
-                    <td><a href="./202503/Your%20archive.html#/tweets/tweets" class="nav-link">x202503</a></td>
-                    <td><a href="./202502/Your%20archive.html#/tweets/tweets" class="nav-link">x202502</a></td>
-                    <td><a href="./magi/Your%20archive.html#/tweets/tweets" class="nav-link">magi</a></td>
+                    <td><a href="./202507/Your%20archive.html#/tweets/tweets" class="nav-link">202507</a></td>
+                    <td><a href="./202506/Your%20archive.html#/tweets/tweets" class="nav-link">202506</a></td>
                 </tr>
 
                 <!-- 第 4 行 -->
                 <tr>
-                    <td><a href="./laoli/Your%20archive.html#/tweets/tweets" class="nav-link">laoli</a></td>
-                    <td><a href="./bonjbonj/Your%20archive.html#/tweets/tweets" class="nav-link">bonj</a></td>
-                    <td><a href="./rulubi/Your%20archive.html#/tweets/tweets" class="nav-link">rulubi</a></td>
-                    <td><a href="./jielurulubixj/Your%20archive.html#/tweets/tweets" class="nav-link">jielurulubixj</a></td>
+                    <td><a href="./202505/Your%20archive.html#/tweets/tweets" class="nav-link">202505</a></td>
+                    <td><a href="./202503/Your%20archive.html#/tweets/tweets" class="nav-link">x202503</a></td>
                 </tr>
 
                 <!-- 第 5 行 -->
                 <tr>
+                    <td><a href="./202502/Your%20archive.html#/tweets/tweets" class="nav-link">x202502</a></td>
+                    <td><a href="./magi/Your%20archive.html#/tweets/tweets" class="nav-link">magi</a></td>
+                </tr>
+
+                <!-- 第 6 行 -->
+                <tr>
+                    <td><a href="./laoli/Your%20archive.html#/tweets/tweets" class="nav-link">laoli</a></td>
+                    <td><a href="./bonjbonj/Your%20archive.html#/tweets/tweets" class="nav-link">bonj</a></td>
+                </tr>
+
+                <!-- 第 7 行 -->
+                <tr>
+                    <td><a href="./rulubi/Your%20archive.html#/tweets/tweets" class="nav-link">rulubi</a></td>
+                    <td><a href="./jielurulubixj/Your%20archive.html#/tweets/tweets" class="nav-link">jielurulubixj</a></td>
+                </tr>
+
+                <!-- 第 8 行 -->
+                <tr>
                     <td><a href="./zhishang/Your%20archive.html#/tweets/tweets" class="nav-link">zhishang</a></td>
                     <td><a href="./emma/Your%20archive.html#/tweets/tweets" class="nav-link">emma</a></td>
+                </tr>
+
+                <!-- 第 9 行 -->
+                <tr>
                     <td><a href="./feni/Your%20archive.html#/tweets/tweets" class="nav-link">feni</a></td>
                     <td></td>
                 </tr>
 
-                <!-- 第 6 行：主要分类链接 -->
+                <!-- 第 10 行：主要分类链接（跨2列） -->
                 <tr>
-                    <td colspan="4" class="featured-cell">
+                    <td colspan="2" class="featured-cell">
                         <a href="./newx/1index.html" class="nav-link featured-link">
                             揭露茹露逼云回国
                         </a>
