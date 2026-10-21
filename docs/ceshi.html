@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub API 文件读写 Demo</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 700px; margin: 20px auto; padding: 0 20px; line-height: 1.5; color: #333; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; font-weight: bold; margin-bottom: 5px; }
+    input, textarea { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; font-family: monospace; }
+    textarea { height: 200px; }
+    .btn-group { display: flex; gap: 10px; margin-bottom: 15px; }
+    button { padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+    .btn-primary { background-color: #2ea44f; color: white; }
+    .btn-secondary { background-color: #0969da; color: white; }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
+    #status { padding: 10px; border-radius: 4px; display: none; margin-bottom: 15px; word-break: break-all; }
+    .success { background-color: #dafbe1; color: #1a7f37; border: 1px solid #4ac26b; }
+    .error { background-color: #ffebe9; color: #cf222e; border: 1px solid #ff8182; }
+    .info { background-color: #ddf4ff; color: #0969da; border: 1px solid #54aeff; }
+  </style>
+</head>
+<body>
+
+  <h2>GitHub REST API 文件读写测试</h2>
+  
+  <div class="form-group">
+    <label for="token">GitHub Personal Access Token (PAT):</label>
+    <input type="password" id="token" placeholder="ghp_xxxxxxxxxxxxxxxxx" autocomplete="off">
+  </div>
+
+  <div style="display: flex; gap: 10px;">
+    <div class="form-group" style="flex: 1;">
+      <label for="owner">仓库 Owner:</label>
+      <input type="text" id="owner" placeholder="你的用户名或组织名">
+    </div>
+    <div class="form-group" style="flex: 1;">
+      <label for="repo">仓库名称 (Repo):</label>
+      <input type="text" id="repo" placeholder="例如 my-repo">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="path">文件路径 (Path):</label>
+    <input type="text" id="path" value="data.json" placeholder="例如 data.json 或 config/setting.txt">
+  </div>
+
+  <div class="btn-group">
+    <button class="btn-secondary" onclick="readFile()">读取远程文件</button>
+    <button class="btn-primary" id="saveBtn" onclick="saveFile()" disabled>保存更新到 GitHub</button>
+  </div>
+
+  <div id="status"></div>
+
+  <div class="form-group">
+    <label for="content">文件内容 (JSON / 文本):</label>
+    <textarea id="content" placeholder="点击“读取远程文件”加载内容，或在此输入新内容..."></textarea>
+  </div>
+
+  <script>
+    // 隐藏的全局状态：记录当前文件的 sha 值（更新文件时必须提供）
+    let currentSha = null;
+
+    // 显示状态提示
+    function showStatus(text, type) {
+      const el = document.getElementById('status');
+      el.innerText = text;
+      el.className = type;
+      el.style.display = 'block';
+    }
+
+    // 获取通用配置参数
+    function getConfig() {
+      const token = document.getElementById('token').value.trim();
+      const owner = document.getElementById('owner').value.trim();
+      const repo = document.getElementById('repo').value.trim();
+      const path = document.getElementById('path').value.trim();
+
+      if (!token || !owner || !repo || !path) {
+        showStatus('请先完整填写 Token、Owner、Repo 和 Path 信息！', 'error');
+        return null;
+      }
+      return { token, owner, repo, path };
+    }
+
+    // Unicode 兼容的 Base64 解码 (处理中文)
+    function b64DecodeUnicode(str) {
+      return decodeURIComponent(atob(str).split('').map(c => 
+        '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+      ).join(''));
+    }
+
+    // Unicode 兼容的 Base64 编码 (处理中文)
+    function utf8ToB64(str) {
+      return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => 
+        String.fromCharCode('0x' + p1)
+      ));
+    }
+
+    // 1. 读取文件
+    async function readFile() {
+      const config = getConfig();
+      if (!config) return;
+
+      showStatus('正在读取文件...', 'info');
+      document.getElementById('saveBtn').disabled = true;
+
+      const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${config.path}`;
+
+      try {
+        const res = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Authorization': `token ${config.token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+
+        if (res.status === 404) {
+          showStatus('文件不存在（保存时将自动创建新文件）', 'info');
+          currentSha = null;
+          document.getElementById('saveBtn').disabled = false;
+          return;
+        }
+
+        if (!res.ok) {
+          const errData = await res.json();
+          throw new Error(errData.message || '读取失败');
+        }
+
+        const data = await res.json();
+        currentSha = data.sha; // 记录文件的 SHA，便于后续更新
+
+        // 解码 Base64 内容
+        const rawContent = b64DecodeUnicode(data.content.replace(/\n/g, ''));
+        document.getElementById('content').value = rawContent;
+
+        showStatus(`读取成功！文件 SHA: ${currentSha.slice(0, 7)}`, 'success');
+        document.getElementById('saveBtn').disabled = false;
+
+      } catch (err) {
+        showStatus(`读取异常: ${err.message}`, 'error');
+      }
+    }
+
+    // 2. 写入 / 更新文件
+    async function saveFile() {
+      const config = getConfig();
+      if (!config) return;
+
+      const contentText = document.getElementById('content').value;
+      showStatus('正在提交更新...', 'info');
+
+      const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${config.path}`;
+
+      // 组装提交数据
+      const payload = {
+        message: `update ${config.path} via GitHub Pages UI`,
+        content: utf8ToB64(contentText) // 将文本进行 base64 编码
+      };
+
+      // 如果存在 SHA，说明是更新现存文件；如果不传 SHA，API 会试图新建文件
+      if (currentSha) {
+        payload.sha = currentSha;
+      }
+
+      try {
+        const res = await fetch(url, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${config.token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.github.v3+json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const resData = await res.json();
+
+        if (!res.ok) {
+          throw new Error(resData.message || '提交失败');
+        }
+
+        // 保存成功后更新本地记录的 SHA，确保能连续修改
+        currentSha = resData.content.sha;
+        showStatus(`保存成功！新 Commit SHA: ${resData.commit.sha.slice(0, 7)}`, 'success');
+
+      } catch (err) {
+        showStatus(`保存失败: ${err.message}`, 'error');
+      }
+    }
+  </script>
+</body>
+</html>
