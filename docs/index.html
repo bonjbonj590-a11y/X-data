@@ -293,6 +293,17 @@
             <img src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data@main/docs/newx/media/cover1.jpg" alt="主页导航" class="banner-img">
         </a>
     </div>
+<!-- 你的网页原本的其他 HTML 内容 ... -->
 
+    <!-- 1. 在这里粘贴 JavaScript 触发脚本 -->
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        // 发送请求触发 Cloudflare Worker 记录 IP
+        fetch('https://ip-logger.bonjbonj590.workers.dev');
+      });
+    </script>
+
+  </body> <!-- 2. 粘贴在 </body> 闭合标签的上边 -->
+</html>
 </body>
 </html>
