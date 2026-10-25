@@ -367,42 +367,33 @@ B圈奇葩你最骚
         </div>
         <div class="tweet-media">
             <video src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data@main/docs/newx/media/1.mp4" controls playsinline></video>
-			
-			<!-- ==================== 全屏预览弹窗容器 ==================== -->
-    <div id="image-modal" onclick="closeModal()">
-        <img id="modal-img" src="" alt="大图预览">
-    </div>
-
-    <!-- ==================== 点击放大交互脚本 ==================== -->
-    <script>
-        const images = document.querySelectorAll('.tweet-media img');
-        const modal = document.getElementById('image-modal');
-        const modalImg = document.getElementById('modal-img');
-
-        images.forEach(img => {
-            img.addEventListener('click', () => {
-                modal.style.display = 'flex'; 
-                modalImg.src = img.src;     
-            });
-        });
-
-        function closeModal() {
-            modal.style.display = 'none';
-            modalImg.src = '';
-        }
-    </script>
-			
-        </div>
-    </div>
-
-    
+			  
  <!-- 框下面的中间 16:9 外部跳转图片 -->
     <div class="bottom-banner-container">
         <a href="https://bonjbonj590-a11y.github.io/X-data/" target="_blank" class="banner-link">
             <img src="https://cdn.jsdelivr.net/gh/bonjbonj590-a11y/X-data@main/docs/newx/media/cover2.jpg" alt="主页导航" class="banner-img">
         </a>
+	
+			 </div>
+      
+    
+
+  
     </div>
 <!-- 你的网页原本的其他 HTML 内容 ... -->
+			
+			
+			<!-- ==================== 全屏预览弹窗容器 ==================== -->
+    <div id="image-modal" onclick="closeModal()">
+        <img id="modal-img" src="" alt="大图预览">
+		
+		
+		
+		
+		
+    </div>
+
+   
 
     <!-- 1. 在这里粘贴 JavaScript 触发脚本 -->
     <script>
