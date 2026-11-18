@@ -31,8 +31,8 @@ main{padding:14px 16px calc(28px + env(safe-area-inset-bottom))}
  opacity:0;transition:opacity .15s ease;pointer-events:none}
 .play svg{width:13px;height:13px;fill:#fff;transform:translateX(1px)}
 .tile:hover .play,.tile:focus-visible .play{opacity:1}
-.cap{font-size:12px;line-height:16px;height:32px;padding:1px 2px 0;min-width:0;text-align:center;
- overflow:hidden;word-break:break-all}
+.cap{font-size:12px;line-height:18px;height:18px;padding:1px 2px 0;min-width:0;text-align:center;
+ overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:var(--txt)}
 .empty{max-width:520px;margin:12vh auto;text-align:center;color:var(--dim);line-height:1.9}
 .empty b{display:block;font-size:17px;color:var(--txt);margin-bottom:6px}
 .player{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;
@@ -62,9 +62,10 @@ main{padding:14px 16px calc(28px + env(safe-area-inset-bottom))}
 .tip[hidden]{display:none}
 body.lock{overflow:hidden}
 @media (max-width:560px){
- .grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:9px}
+ .grid{grid-template-columns:repeat(3,1fr);gap:10px}   /* 手机固定 3 列，别再被挤成 4 列 */
  main{padding:11px 12px calc(24px + env(safe-area-inset-bottom))}
  h1{font-size:15px}
+ .tile{padding:5px}
  #video{max-height:52vh}
 }
 @media (hover:none){.play{opacity:.92}}
@@ -82,7 +83,7 @@ body.lock{overflow:hidden}
         <img src="2082559365949612193-upzwgW31gus6iFux.jpg" alt="2082559365949612193-upzwgW31gus6iFux" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">2082559365949612193-upzwgW31gus6iFux</span>
+      <span class="cap" title="2082559365949612193-upzwgW31gus6iFux.mp4">1：2082559365949612193</span>
     </a>
     <a class="tile" href="2077398839946883239-qx98YmCs4D2CX0fu.mp4" data-src="2077398839946883239-qx98YmCs4D2CX0fu.mp4" data-name="2077398839946883239-qx98YmCs4D2CX0fu.mp4" data-id="2"
        data-title="2077398839946883239-qx98YmCs4D2CX0fu" tabindex="0">
@@ -90,7 +91,7 @@ body.lock{overflow:hidden}
         <img src="2077398839946883239-qx98YmCs4D2CX0fu.jpg" alt="2077398839946883239-qx98YmCs4D2CX0fu" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">2077398839946883239-qx98YmCs4D2CX0fu</span>
+      <span class="cap" title="2077398839946883239-qx98YmCs4D2CX0fu.mp4">2：2077398839946883239</span>
     </a>
     <a class="tile" href="1720017393869525456-h5OgXtmyVlm_Sg_g.mp4" data-src="1720017393869525456-h5OgXtmyVlm_Sg_g.mp4" data-name="1720017393869525456-h5OgXtmyVlm_Sg_g.mp4" data-id="3"
        data-title="1720017393869525456-h5OgXtmyVlm_Sg_g" tabindex="0">
@@ -98,7 +99,7 @@ body.lock{overflow:hidden}
         <img src="1720017393869525456-h5OgXtmyVlm_Sg_g.jpg" alt="1720017393869525456-h5OgXtmyVlm_Sg_g" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1720017393869525456-h5OgXtmyVlm_Sg_g</span>
+      <span class="cap" title="1720017393869525456-h5OgXtmyVlm_Sg_g.mp4">3：1720017393869525456</span>
     </a>
     <a class="tile" href="2036195423677771867-Cxw7YBW7zjfZjioP.mp4" data-src="2036195423677771867-Cxw7YBW7zjfZjioP.mp4" data-name="2036195423677771867-Cxw7YBW7zjfZjioP.mp4" data-id="4"
        data-title="2036195423677771867-Cxw7YBW7zjfZjioP" tabindex="0">
@@ -106,7 +107,7 @@ body.lock{overflow:hidden}
         <img src="2036195423677771867-Cxw7YBW7zjfZjioP.jpg" alt="2036195423677771867-Cxw7YBW7zjfZjioP" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">2036195423677771867-Cxw7YBW7zjfZjioP</span>
+      <span class="cap" title="2036195423677771867-Cxw7YBW7zjfZjioP.mp4">4：2036195423677771867</span>
     </a>
     <a class="tile" href="1854566493335216533-Pi5OMXoDP7s5lLNr.mp4" data-src="1854566493335216533-Pi5OMXoDP7s5lLNr.mp4" data-name="1854566493335216533-Pi5OMXoDP7s5lLNr.mp4" data-id="5"
        data-title="1854566493335216533-Pi5OMXoDP7s5lLNr" tabindex="0">
@@ -114,7 +115,7 @@ body.lock{overflow:hidden}
         <img src="1854566493335216533-Pi5OMXoDP7s5lLNr.jpg" alt="1854566493335216533-Pi5OMXoDP7s5lLNr" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1854566493335216533-Pi5OMXoDP7s5lLNr</span>
+      <span class="cap" title="1854566493335216533-Pi5OMXoDP7s5lLNr.mp4">5：1854566493335216533</span>
     </a>
     <a class="tile" href="1856334544258912391-CtWA8L-qTBdkUHie.mp4" data-src="1856334544258912391-CtWA8L-qTBdkUHie.mp4" data-name="1856334544258912391-CtWA8L-qTBdkUHie.mp4" data-id="6"
        data-title="1856334544258912391-CtWA8L-qTBdkUHie" tabindex="0">
@@ -122,7 +123,7 @@ body.lock{overflow:hidden}
         <img src="1856334544258912391-CtWA8L-qTBdkUHie.jpg" alt="1856334544258912391-CtWA8L-qTBdkUHie" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1856334544258912391-CtWA8L-qTBdkUHie</span>
+      <span class="cap" title="1856334544258912391-CtWA8L-qTBdkUHie.mp4">6：1856334544258912391</span>
     </a>
     <a class="tile" href="1719270187575181369-s1fQzKnAyeYmxNUT.mp4" data-src="1719270187575181369-s1fQzKnAyeYmxNUT.mp4" data-name="1719270187575181369-s1fQzKnAyeYmxNUT.mp4" data-id="7"
        data-title="1719270187575181369-s1fQzKnAyeYmxNUT" tabindex="0">
@@ -130,7 +131,7 @@ body.lock{overflow:hidden}
         <img src="1719270187575181369-s1fQzKnAyeYmxNUT.jpg" alt="1719270187575181369-s1fQzKnAyeYmxNUT" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1719270187575181369-s1fQzKnAyeYmxNUT</span>
+      <span class="cap" title="1719270187575181369-s1fQzKnAyeYmxNUT.mp4">7：1719270187575181369</span>
     </a>
     <a class="tile" href="1830970200109523099-_zUVaHWrCDLCN33o.mp4" data-src="1830970200109523099-_zUVaHWrCDLCN33o.mp4" data-name="1830970200109523099-_zUVaHWrCDLCN33o.mp4" data-id="8"
        data-title="1830970200109523099-_zUVaHWrCDLCN33o" tabindex="0">
@@ -138,7 +139,7 @@ body.lock{overflow:hidden}
         <img src="1830970200109523099-_zUVaHWrCDLCN33o.jpg" alt="1830970200109523099-_zUVaHWrCDLCN33o" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1830970200109523099-_zUVaHWrCDLCN33o</span>
+      <span class="cap" title="1830970200109523099-_zUVaHWrCDLCN33o.mp4">8：1830970200109523099</span>
     </a>
     <a class="tile" href="1743578111675904143-L1kYrx-r4-joMXVN.mp4" data-src="1743578111675904143-L1kYrx-r4-joMXVN.mp4" data-name="1743578111675904143-L1kYrx-r4-joMXVN.mp4" data-id="9"
        data-title="1743578111675904143-L1kYrx-r4-joMXVN" tabindex="0">
@@ -146,7 +147,7 @@ body.lock{overflow:hidden}
         <img src="1743578111675904143-L1kYrx-r4-joMXVN.jpg" alt="1743578111675904143-L1kYrx-r4-joMXVN" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1743578111675904143-L1kYrx-r4-joMXVN</span>
+      <span class="cap" title="1743578111675904143-L1kYrx-r4-joMXVN.mp4">9：1743578111675904143</span>
     </a>
     <a class="tile" href="2092052199228535228-az16RjrYOPIIP019.mp4" data-src="2092052199228535228-az16RjrYOPIIP019.mp4" data-name="2092052199228535228-az16RjrYOPIIP019.mp4" data-id="10"
        data-title="2092052199228535228-az16RjrYOPIIP019" tabindex="0">
@@ -154,7 +155,7 @@ body.lock{overflow:hidden}
         <img src="2092052199228535228-az16RjrYOPIIP019.jpg" alt="2092052199228535228-az16RjrYOPIIP019" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">2092052199228535228-az16RjrYOPIIP019</span>
+      <span class="cap" title="2092052199228535228-az16RjrYOPIIP019.mp4">10：2092052199228535228</span>
     </a>
     <a class="tile" href="1881850363525165261-dHvUyEvCjEhPodwh.mp4" data-src="1881850363525165261-dHvUyEvCjEhPodwh.mp4" data-name="1881850363525165261-dHvUyEvCjEhPodwh.mp4" data-id="11"
        data-title="1881850363525165261-dHvUyEvCjEhPodwh" tabindex="0">
@@ -162,7 +163,7 @@ body.lock{overflow:hidden}
         <img src="1881850363525165261-dHvUyEvCjEhPodwh.jpg" alt="1881850363525165261-dHvUyEvCjEhPodwh" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1881850363525165261-dHvUyEvCjEhPodwh</span>
+      <span class="cap" title="1881850363525165261-dHvUyEvCjEhPodwh.mp4">11：1881850363525165261</span>
     </a>
     <a class="tile" href="1792159911373066505-DRp0ijogpwQIWO6a.mp4" data-src="1792159911373066505-DRp0ijogpwQIWO6a.mp4" data-name="1792159911373066505-DRp0ijogpwQIWO6a.mp4" data-id="12"
        data-title="1792159911373066505-DRp0ijogpwQIWO6a" tabindex="0">
@@ -170,7 +171,7 @@ body.lock{overflow:hidden}
         <img src="1792159911373066505-DRp0ijogpwQIWO6a.jpg" alt="1792159911373066505-DRp0ijogpwQIWO6a" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1792159911373066505-DRp0ijogpwQIWO6a</span>
+      <span class="cap" title="1792159911373066505-DRp0ijogpwQIWO6a.mp4">12：1792159911373066505</span>
     </a>
     <a class="tile" href="1935652238011105574-6M5QwPDXlzD9Nry_.mp4" data-src="1935652238011105574-6M5QwPDXlzD9Nry_.mp4" data-name="1935652238011105574-6M5QwPDXlzD9Nry_.mp4" data-id="13"
        data-title="1935652238011105574-6M5QwPDXlzD9Nry_" tabindex="0">
@@ -178,7 +179,7 @@ body.lock{overflow:hidden}
         <img src="1935652238011105574-6M5QwPDXlzD9Nry_.jpg" alt="1935652238011105574-6M5QwPDXlzD9Nry_" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1935652238011105574-6M5QwPDXlzD9Nry_</span>
+      <span class="cap" title="1935652238011105574-6M5QwPDXlzD9Nry_.mp4">13：1935652238011105574</span>
     </a>
     <a class="tile" href="1902172038535479680-0eZqbc4qsllifDmT.mp4" data-src="1902172038535479680-0eZqbc4qsllifDmT.mp4" data-name="1902172038535479680-0eZqbc4qsllifDmT.mp4" data-id="14"
        data-title="1902172038535479680-0eZqbc4qsllifDmT" tabindex="0">
@@ -186,7 +187,7 @@ body.lock{overflow:hidden}
         <img src="1902172038535479680-0eZqbc4qsllifDmT.jpg" alt="1902172038535479680-0eZqbc4qsllifDmT" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1902172038535479680-0eZqbc4qsllifDmT</span>
+      <span class="cap" title="1902172038535479680-0eZqbc4qsllifDmT.mp4">14：1902172038535479680</span>
     </a>
     <a class="tile" href="1909602560442269705-GCl4_9c3Y4rA-Fqx.mp4" data-src="1909602560442269705-GCl4_9c3Y4rA-Fqx.mp4" data-name="1909602560442269705-GCl4_9c3Y4rA-Fqx.mp4" data-id="15"
        data-title="1909602560442269705-GCl4_9c3Y4rA-Fqx" tabindex="0">
@@ -194,7 +195,7 @@ body.lock{overflow:hidden}
         <img src="1909602560442269705-GCl4_9c3Y4rA-Fqx.jpg" alt="1909602560442269705-GCl4_9c3Y4rA-Fqx" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1909602560442269705-GCl4_9c3Y4rA-Fqx</span>
+      <span class="cap" title="1909602560442269705-GCl4_9c3Y4rA-Fqx.mp4">15：1909602560442269705</span>
     </a>
     <a class="tile" href="2036192404798079291-4BzSSaD5di3CEgsA.mp4" data-src="2036192404798079291-4BzSSaD5di3CEgsA.mp4" data-name="2036192404798079291-4BzSSaD5di3CEgsA.mp4" data-id="16"
        data-title="2036192404798079291-4BzSSaD5di3CEgsA" tabindex="0">
@@ -202,7 +203,7 @@ body.lock{overflow:hidden}
         <img src="2036192404798079291-4BzSSaD5di3CEgsA.jpg" alt="2036192404798079291-4BzSSaD5di3CEgsA" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">2036192404798079291-4BzSSaD5di3CEgsA</span>
+      <span class="cap" title="2036192404798079291-4BzSSaD5di3CEgsA.mp4">16：2036192404798079291</span>
     </a>
     <a class="tile" href="1712214839475450020-iMPTCmsFgeQO9GS9.mp4" data-src="1712214839475450020-iMPTCmsFgeQO9GS9.mp4" data-name="1712214839475450020-iMPTCmsFgeQO9GS9.mp4" data-id="17"
        data-title="1712214839475450020-iMPTCmsFgeQO9GS9" tabindex="0">
@@ -210,7 +211,7 @@ body.lock{overflow:hidden}
         <img src="1712214839475450020-iMPTCmsFgeQO9GS9.jpg" alt="1712214839475450020-iMPTCmsFgeQO9GS9" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1712214839475450020-iMPTCmsFgeQO9GS9</span>
+      <span class="cap" title="1712214839475450020-iMPTCmsFgeQO9GS9.mp4">17：1712214839475450020</span>
     </a>
     <a class="tile" href="1936969337870405645-Gf6ZZTRKlLE2DQSl.mp4" data-src="1936969337870405645-Gf6ZZTRKlLE2DQSl.mp4" data-name="1936969337870405645-Gf6ZZTRKlLE2DQSl.mp4" data-id="18"
        data-title="1936969337870405645-Gf6ZZTRKlLE2DQSl" tabindex="0">
@@ -218,7 +219,7 @@ body.lock{overflow:hidden}
         <img src="1936969337870405645-Gf6ZZTRKlLE2DQSl.jpg" alt="1936969337870405645-Gf6ZZTRKlLE2DQSl" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1936969337870405645-Gf6ZZTRKlLE2DQSl</span>
+      <span class="cap" title="1936969337870405645-Gf6ZZTRKlLE2DQSl.mp4">18：1936969337870405645</span>
     </a>
     <a class="tile" href="1938797596975452285-xazLvgZZvpLsPPWI.mp4" data-src="1938797596975452285-xazLvgZZvpLsPPWI.mp4" data-name="1938797596975452285-xazLvgZZvpLsPPWI.mp4" data-id="19"
        data-title="1938797596975452285-xazLvgZZvpLsPPWI" tabindex="0">
@@ -226,7 +227,7 @@ body.lock{overflow:hidden}
         <img src="1938797596975452285-xazLvgZZvpLsPPWI.jpg" alt="1938797596975452285-xazLvgZZvpLsPPWI" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1938797596975452285-xazLvgZZvpLsPPWI</span>
+      <span class="cap" title="1938797596975452285-xazLvgZZvpLsPPWI.mp4">19：1938797596975452285</span>
     </a>
     <a class="tile" href="1722568605588484366-MzEh4b8CtmvcAcmJ.mp4" data-src="1722568605588484366-MzEh4b8CtmvcAcmJ.mp4" data-name="1722568605588484366-MzEh4b8CtmvcAcmJ.mp4" data-id="20"
        data-title="1722568605588484366-MzEh4b8CtmvcAcmJ" tabindex="0">
@@ -234,7 +235,7 @@ body.lock{overflow:hidden}
         <img src="1722568605588484366-MzEh4b8CtmvcAcmJ.jpg" alt="1722568605588484366-MzEh4b8CtmvcAcmJ" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1722568605588484366-MzEh4b8CtmvcAcmJ</span>
+      <span class="cap" title="1722568605588484366-MzEh4b8CtmvcAcmJ.mp4">20：1722568605588484366</span>
     </a>
     <a class="tile" href="1853762056328970371-eVS2LOP3R10UrsWz.mp4" data-src="1853762056328970371-eVS2LOP3R10UrsWz.mp4" data-name="1853762056328970371-eVS2LOP3R10UrsWz.mp4" data-id="21"
        data-title="1853762056328970371-eVS2LOP3R10UrsWz" tabindex="0">
@@ -242,7 +243,7 @@ body.lock{overflow:hidden}
         <img src="1853762056328970371-eVS2LOP3R10UrsWz.jpg" alt="1853762056328970371-eVS2LOP3R10UrsWz" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1853762056328970371-eVS2LOP3R10UrsWz</span>
+      <span class="cap" title="1853762056328970371-eVS2LOP3R10UrsWz.mp4">21：1853762056328970371</span>
     </a>
     <a class="tile" href="1856313006033891467-F40regqMIRoK5KY8.mp4" data-src="1856313006033891467-F40regqMIRoK5KY8.mp4" data-name="1856313006033891467-F40regqMIRoK5KY8.mp4" data-id="22"
        data-title="1856313006033891467-F40regqMIRoK5KY8" tabindex="0">
@@ -250,7 +251,7 @@ body.lock{overflow:hidden}
         <img src="1856313006033891467-F40regqMIRoK5KY8.jpg" alt="1856313006033891467-F40regqMIRoK5KY8" loading="lazy" decoding="async">
         <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
       </span>
-      <span class="cap">1856313006033891467-F40regqMIRoK5KY8</span>
+      <span class="cap" title="1856313006033891467-F40regqMIRoK5KY8.mp4">22：1856313006033891467</span>
     </a>
   </div>
   <div class="empty" id="empty" hidden><b>没有匹配的视频</b>换个关键词试试</div>
