@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>jiarenshexiaohuageng · 视频库</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--line:#e5e7eb;--txt:#17181c;--dim:#6b7280;--accent:#2f6bff}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--txt);
+ font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.top{position:sticky;top:0;z-index:30;background:rgba(246,247,249,.9);border-bottom:1px solid var(--line);
+ -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+ padding:11px 16px;padding-top:calc(11px + env(safe-area-inset-top))}
+.bar{display:flex;align-items:baseline;gap:10px;max-width:1280px;margin:0 auto}
+h1{margin:0;font-size:17px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.count{color:var(--dim);font-size:12px;white-space:nowrap}
+main{padding:14px 16px calc(28px + env(safe-area-inset-bottom))}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));
+ max-width:1280px;margin:0 auto;align-content:start}
+.tile{display:flex;flex-direction:column;gap:5px;padding:6px;text-decoration:none;color:inherit;
+ background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;min-width:0;
+ cursor:pointer;transition:transform .16s ease,box-shadow .16s ease}
+.tile:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(17,24,39,.10)}
+.tile:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ph{position:relative;width:100%;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:#0f1115}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.play{position:absolute;inset:0;margin:auto;width:32px;height:32px;border-radius:50%;
+ background:rgba(0,0,0,.46);display:flex;align-items:center;justify-content:center;
+ opacity:0;transition:opacity .15s ease;pointer-events:none}
+.play svg{width:13px;height:13px;fill:#fff;transform:translateX(1px)}
+.tile:hover .play,.tile:focus-visible .play{opacity:1}
+.cap{font-size:12px;line-height:16px;height:32px;padding:1px 2px 0;min-width:0;text-align:center;
+ overflow:hidden;word-break:break-all}
+.empty{max-width:520px;margin:12vh auto;text-align:center;color:var(--dim);line-height:1.9}
+.empty b{display:block;font-size:17px;color:var(--txt);margin-bottom:6px}
+.player{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;
+ padding:14px;padding-top:calc(14px + env(safe-area-inset-top));background:rgba(9,11,15,.94)}
+.player[hidden]{display:none}
+.sheet{width:min(1080px,100%);max-height:100%;display:flex;flex-direction:column;gap:10px}
+.phead{display:flex;align-items:center;gap:12px;color:#fff}
+.ptitle{flex:1;min-width:0;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.x{flex:none;width:36px;height:36px;border:0;border-radius:10px;background:rgba(255,255,255,.16);
+ color:#fff;font-size:17px;line-height:1;cursor:pointer}
+.x:hover{background:rgba(255,255,255,.26)}
+#video{width:100%;aspect-ratio:16/9;object-fit:contain;background:#000;border-radius:12px;
+ display:block;max-height:calc(100vh - 208px)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:10px;
+ font-size:14px;font-weight:600;text-decoration:none;border:0;cursor:pointer}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.primary:hover{background:#255ae0}
+.btn.ghost{background:rgba(255,255,255,.16);color:#fff}
+.btn.ghost:hover{background:rgba(255,255,255,.26)}
+.chk{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:10px;
+ background:rgba(255,255,255,.10);color:#fff;font-size:14px;font-weight:600;cursor:pointer;
+ user-select:none}
+.chk:hover{background:rgba(255,255,255,.18)}
+.chk input{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
+.tip{font-size:12px;line-height:1.6;color:rgba(255,255,255,.62)}
+.tip[hidden]{display:none}
+body.lock{overflow:hidden}
+@media (max-width:560px){
+ .grid{grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:9px}
+ main{padding:11px 12px calc(24px + env(safe-area-inset-bottom))}
+ h1{font-size:15px}
+ #video{max-height:52vh}
+}
+@media (hover:none){.play{opacity:.92}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="bar"><h1>jiarenshexiaohuageng · 视频库</h1><span class="count">共 32 个视频</span></div>
+</header>
+<main>
+  <div class="grid" id="grid">
+    <a class="tile" href="2071306010598281341-IGW5uH19YHZ0OBQI.mp4" data-src="2071306010598281341-IGW5uH19YHZ0OBQI.mp4" data-name="2071306010598281341-IGW5uH19YHZ0OBQI.mp4" data-id="1"
+       data-title="2071306010598281341-IGW5uH19YHZ0OBQI" tabindex="0">
+      <span class="ph">
+        <img src="2071306010598281341-IGW5uH19YHZ0OBQI.jpg" alt="2071306010598281341-IGW5uH19YHZ0OBQI" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">2071306010598281341-IGW5uH19YHZ0OBQI</span>
+    </a>
+    <a class="tile" href="1856313006033891467-KvX32YtfLBbdytis.mp4" data-src="1856313006033891467-KvX32YtfLBbdytis.mp4" data-name="1856313006033891467-KvX32YtfLBbdytis.mp4" data-id="2"
+       data-title="1856313006033891467-KvX32YtfLBbdytis" tabindex="0">
+      <span class="ph">
+        <img src="1856313006033891467-KvX32YtfLBbdytis.jpg" alt="1856313006033891467-KvX32YtfLBbdytis" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1856313006033891467-KvX32YtfLBbdytis</span>
+    </a>
+    <a class="tile" href="1856313006033891467-DGAgRpcTYloEC8IY.mp4" data-src="1856313006033891467-DGAgRpcTYloEC8IY.mp4" data-name="1856313006033891467-DGAgRpcTYloEC8IY.mp4" data-id="3"
+       data-title="1856313006033891467-DGAgRpcTYloEC8IY" tabindex="0">
+      <span class="ph">
+        <img src="1856313006033891467-DGAgRpcTYloEC8IY.jpg" alt="1856313006033891467-DGAgRpcTYloEC8IY" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1856313006033891467-DGAgRpcTYloEC8IY</span>
+    </a>
+    <a class="tile" href="2096790686787879328-M2d4Qnm80nHOAA-b.mp4" data-src="2096790686787879328-M2d4Qnm80nHOAA-b.mp4" data-name="2096790686787879328-M2d4Qnm80nHOAA-b.mp4" data-id="4"
+       data-title="2096790686787879328-M2d4Qnm80nHOAA-b" tabindex="0">
+      <span class="ph">
+        <img src="2096790686787879328-M2d4Qnm80nHOAA-b.jpg" alt="2096790686787879328-M2d4Qnm80nHOAA-b" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">2096790686787879328-M2d4Qnm80nHOAA-b</span>
+    </a>
+    <a class="tile" href="1706435036755472840-HHrwThGFZldzVXPJ.mp4" data-src="1706435036755472840-HHrwThGFZldzVXPJ.mp4" data-name="1706435036755472840-HHrwThGFZldzVXPJ.mp4" data-id="5"
+       data-title="1706435036755472840-HHrwThGFZldzVXPJ" tabindex="0">
+      <span class="ph">
+        <img src="1706435036755472840-HHrwThGFZldzVXPJ.jpg" alt="1706435036755472840-HHrwThGFZldzVXPJ" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1706435036755472840-HHrwThGFZldzVXPJ</span>
+    </a>
+    <a class="tile" href="1857744467823833351-Rj4NF7ofI9uc4cyR.mp4" data-src="1857744467823833351-Rj4NF7ofI9uc4cyR.mp4" data-name="1857744467823833351-Rj4NF7ofI9uc4cyR.mp4" data-id="6"
+       data-title="1857744467823833351-Rj4NF7ofI9uc4cyR" tabindex="0">
+      <span class="ph">
+        <img src="1857744467823833351-Rj4NF7ofI9uc4cyR.jpg" alt="1857744467823833351-Rj4NF7ofI9uc4cyR" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1857744467823833351-Rj4NF7ofI9uc4cyR</span>
+    </a>
+    <a class="tile" href="2099120281650356254-L3AkwxhOtB_UtJ4b.mp4" data-src="2099120281650356254-L3AkwxhOtB_UtJ4b.mp4" data-name="2099120281650356254-L3AkwxhOtB_UtJ4b.mp4" data-id="7"
+       data-title="2099120281650356254-L3AkwxhOtB_UtJ4b" tabindex="0">
+      <span class="ph">
+        <img src="2099120281650356254-L3AkwxhOtB_UtJ4b.jpg" alt="2099120281650356254-L3AkwxhOtB_UtJ4b" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">2099120281650356254-L3AkwxhOtB_UtJ4b</span>
+    </a>
+    <a class="tile" href="1831883717142573378-ufRd3RhfTDSGUFhP.mp4" data-src="1831883717142573378-ufRd3RhfTDSGUFhP.mp4" data-name="1831883717142573378-ufRd3RhfTDSGUFhP.mp4" data-id="8"
+       data-title="1831883717142573378-ufRd3RhfTDSGUFhP" tabindex="0">
+      <span class="ph">
+        <img src="1831883717142573378-ufRd3RhfTDSGUFhP.jpg" alt="1831883717142573378-ufRd3RhfTDSGUFhP" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1831883717142573378-ufRd3RhfTDSGUFhP</span>
+    </a>
+    <a class="tile" href="2099597130469986424-OftoTgefifa1unVR.mp4" data-src="2099597130469986424-OftoTgefifa1unVR.mp4" data-name="2099597130469986424-OftoTgefifa1unVR.mp4" data-id="9"
+       data-title="2099597130469986424-OftoTgefifa1unVR" tabindex="0">
+      <span class="ph">
+        <img src="2099597130469986424-OftoTgefifa1unVR.jpg" alt="2099597130469986424-OftoTgefifa1unVR" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">2099597130469986424-OftoTgefifa1unVR</span>
+    </a>
+    <a class="tile" href="1707412957091520832-HzJz-rBxJA5tEnia.mp4" data-src="1707412957091520832-HzJz-rBxJA5tEnia.mp4" data-name="1707412957091520832-HzJz-rBxJA5tEnia.mp4" data-id="10"
+       data-title="1707412957091520832-HzJz-rBxJA5tEnia" tabindex="0">
+      <span class="ph">
+        <img src="1707412957091520832-HzJz-rBxJA5tEnia.jpg" alt="1707412957091520832-HzJz-rBxJA5tEnia" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1707412957091520832-HzJz-rBxJA5tEnia</span>
+    </a>
+    <a class="tile" href="1881850363525165261-dHvUyEvCjEhPodwh.mp4" data-src="1881850363525165261-dHvUyEvCjEhPodwh.mp4" data-name="1881850363525165261-dHvUyEvCjEhPodwh.mp4" data-id="11"
+       data-title="1881850363525165261-dHvUyEvCjEhPodwh" tabindex="0">
+      <span class="ph">
+        <img src="1881850363525165261-dHvUyEvCjEhPodwh.jpg" alt="1881850363525165261-dHvUyEvCjEhPodwh" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1881850363525165261-dHvUyEvCjEhPodwh</span>
+    </a>
+    <a class="tile" href="1710252076557639802-Itdl-ZPjCdbFkofw.mp4" data-src="1710252076557639802-Itdl-ZPjCdbFkofw.mp4" data-name="1710252076557639802-Itdl-ZPjCdbFkofw.mp4" data-id="12"
+       data-title="1710252076557639802-Itdl-ZPjCdbFkofw" tabindex="0">
+      <span class="ph">
+        <img src="1710252076557639802-Itdl-ZPjCdbFkofw.jpg" alt="1710252076557639802-Itdl-ZPjCdbFkofw" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1710252076557639802-Itdl-ZPjCdbFkofw</span>
+    </a>
+    <a class="tile" href="1712214839475450020-iMPTCmsFgeQO9GS9.mp4" data-src="1712214839475450020-iMPTCmsFgeQO9GS9.mp4" data-name="1712214839475450020-iMPTCmsFgeQO9GS9.mp4" data-id="13"
+       data-title="1712214839475450020-iMPTCmsFgeQO9GS9" tabindex="0">
+      <span class="ph">
+        <img src="1712214839475450020-iMPTCmsFgeQO9GS9.jpg" alt="1712214839475450020-iMPTCmsFgeQO9GS9" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1712214839475450020-iMPTCmsFgeQO9GS9</span>
+    </a>
+    <a class="tile" href="1906423473540608253-FdSSz7v7D8DXmPH9.mp4" data-src="1906423473540608253-FdSSz7v7D8DXmPH9.mp4" data-name="1906423473540608253-FdSSz7v7D8DXmPH9.mp4" data-id="14"
+       data-title="1906423473540608253-FdSSz7v7D8DXmPH9" tabindex="0">
+      <span class="ph">
+        <img src="1906423473540608253-FdSSz7v7D8DXmPH9.jpg" alt="1906423473540608253-FdSSz7v7D8DXmPH9" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1906423473540608253-FdSSz7v7D8DXmPH9</span>
+    </a>
+    <a class="tile" href="1715288618070110533-V3WBFcLu_U2AWFrB.mp4" data-src="1715288618070110533-V3WBFcLu_U2AWFrB.mp4" data-name="1715288618070110533-V3WBFcLu_U2AWFrB.mp4" data-id="15"
+       data-title="1715288618070110533-V3WBFcLu_U2AWFrB" tabindex="0">
+      <span class="ph">
+        <img src="1715288618070110533-V3WBFcLu_U2AWFrB.jpg" alt="1715288618070110533-V3WBFcLu_U2AWFrB" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1715288618070110533-V3WBFcLu_U2AWFrB</span>
+    </a>
+    <a class="tile" href="1835411818602233966-3hDsLLqd9TjCYczM.mp4" data-src="1835411818602233966-3hDsLLqd9TjCYczM.mp4" data-name="1835411818602233966-3hDsLLqd9TjCYczM.mp4" data-id="16"
+       data-title="1835411818602233966-3hDsLLqd9TjCYczM" tabindex="0">
+      <span class="ph">
+        <img src="1835411818602233966-3hDsLLqd9TjCYczM.jpg" alt="1835411818602233966-3hDsLLqd9TjCYczM" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1835411818602233966-3hDsLLqd9TjCYczM</span>
+    </a>
+    <a class="tile" href="1909552247874142400-uMO33Ja7qJKGKmd4.mp4" data-src="1909552247874142400-uMO33Ja7qJKGKmd4.mp4" data-name="1909552247874142400-uMO33Ja7qJKGKmd4.mp4" data-id="17"
+       data-title="1909552247874142400-uMO33Ja7qJKGKmd4" tabindex="0">
+      <span class="ph">
+        <img src="1909552247874142400-uMO33Ja7qJKGKmd4.jpg" alt="1909552247874142400-uMO33Ja7qJKGKmd4" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1909552247874142400-uMO33Ja7qJKGKmd4</span>
+    </a>
+    <a class="tile" href="1791875735545651424-o4EojtGc0CV9n_km.mp4" data-src="1791875735545651424-o4EojtGc0CV9n_km.mp4" data-name="1791875735545651424-o4EojtGc0CV9n_km.mp4" data-id="18"
+       data-title="1791875735545651424-o4EojtGc0CV9n_km" tabindex="0">
+      <span class="ph">
+        <img src="1791875735545651424-o4EojtGc0CV9n_km.jpg" alt="1791875735545651424-o4EojtGc0CV9n_km" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1791875735545651424-o4EojtGc0CV9n_km</span>
+    </a>
+    <a class="tile" href="1725514491692040521-JFWMQPtHpxvikeX-.mp4" data-src="1725514491692040521-JFWMQPtHpxvikeX-.mp4" data-name="1725514491692040521-JFWMQPtHpxvikeX-.mp4" data-id="19"
+       data-title="1725514491692040521-JFWMQPtHpxvikeX-" tabindex="0">
+      <span class="ph">
+        <img src="1725514491692040521-JFWMQPtHpxvikeX-.jpg" alt="1725514491692040521-JFWMQPtHpxvikeX-" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1725514491692040521-JFWMQPtHpxvikeX-</span>
+    </a>
+    <a class="tile" href="1915841814315102474-eVsgg3ixyMFu7DoZ.mp4" data-src="1915841814315102474-eVsgg3ixyMFu7DoZ.mp4" data-name="1915841814315102474-eVsgg3ixyMFu7DoZ.mp4" data-id="20"
+       data-title="1915841814315102474-eVsgg3ixyMFu7DoZ" tabindex="0">
+      <span class="ph">
+        <img src="1915841814315102474-eVsgg3ixyMFu7DoZ.jpg" alt="1915841814315102474-eVsgg3ixyMFu7DoZ" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1915841814315102474-eVsgg3ixyMFu7DoZ</span>
+    </a>
+    <a class="tile" href="1927536791147405630-Hz8XWy6WF0VtTzlk.mp4" data-src="1927536791147405630-Hz8XWy6WF0VtTzlk.mp4" data-name="1927536791147405630-Hz8XWy6WF0VtTzlk.mp4" data-id="21"
+       data-title="1927536791147405630-Hz8XWy6WF0VtTzlk" tabindex="0">
+      <span class="ph">
+        <img src="1927536791147405630-Hz8XWy6WF0VtTzlk.jpg" alt="1927536791147405630-Hz8XWy6WF0VtTzlk" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1927536791147405630-Hz8XWy6WF0VtTzlk</span>
+    </a>
+    <a class="tile" href="2082163827097903551-RbzZQ4UtZYioCB82.mp4" data-src="2082163827097903551-RbzZQ4UtZYioCB82.mp4" data-name="2082163827097903551-RbzZQ4UtZYioCB82.mp4" data-id="22"
+       data-title="2082163827097903551-RbzZQ4UtZYioCB82" tabindex="0">
+      <span class="ph">
+        <img src="2082163827097903551-RbzZQ4UtZYioCB82.jpg" alt="2082163827097903551-RbzZQ4UtZYioCB82" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">2082163827097903551-RbzZQ4UtZYioCB82</span>
+    </a>
+    <a class="tile" href="2080253500827513198-5Wf9EosYlf_qq87G.mp4" data-src="2080253500827513198-5Wf9EosYlf_qq87G.mp4" data-name="2080253500827513198-5Wf9EosYlf_qq87G.mp4" data-id="23"
+       data-title="2080253500827513198-5Wf9EosYlf_qq87G" tabindex="0">
+      <span class="ph">
+        <img src="2080253500827513198-5Wf9EosYlf_qq87G.jpg" alt="2080253500827513198-5Wf9EosYlf_qq87G" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">2080253500827513198-5Wf9EosYlf_qq87G</span>
+    </a>
+    <a class="tile" href="2031310793329741826-qcoobSGqJnlLxxNf.mp4" data-src="2031310793329741826-qcoobSGqJnlLxxNf.mp4" data-name="2031310793329741826-qcoobSGqJnlLxxNf.mp4" data-id="24"
+       data-title="2031310793329741826-qcoobSGqJnlLxxNf" tabindex="0">
+      <span class="ph">
+        <img src="2031310793329741826-qcoobSGqJnlLxxNf.jpg" alt="2031310793329741826-qcoobSGqJnlLxxNf" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">2031310793329741826-qcoobSGqJnlLxxNf</span>
+    </a>
+    <a class="tile" href="2081004611666608424-O2t7efAyHzSf8mZG.mp4" data-src="2081004611666608424-O2t7efAyHzSf8mZG.mp4" data-name="2081004611666608424-O2t7efAyHzSf8mZG.mp4" data-id="25"
+       data-title="2081004611666608424-O2t7efAyHzSf8mZG" tabindex="0">
+      <span class="ph">
+        <img src="2081004611666608424-O2t7efAyHzSf8mZG.jpg" alt="2081004611666608424-O2t7efAyHzSf8mZG" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">2081004611666608424-O2t7efAyHzSf8mZG</span>
+    </a>
+    <a class="tile" href="1823081993061429595-cJ3bs1Qo8nCrf4ew.mp4" data-src="1823081993061429595-cJ3bs1Qo8nCrf4ew.mp4" data-name="1823081993061429595-cJ3bs1Qo8nCrf4ew.mp4" data-id="26"
+       data-title="1823081993061429595-cJ3bs1Qo8nCrf4ew" tabindex="0">
+      <span class="ph">
+        <img src="1823081993061429595-cJ3bs1Qo8nCrf4ew.jpg" alt="1823081993061429595-cJ3bs1Qo8nCrf4ew" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1823081993061429595-cJ3bs1Qo8nCrf4ew</span>
+    </a>
+    <a class="tile" href="1717646343244501058-XP9a6pikhfLWc1de.mp4" data-src="1717646343244501058-XP9a6pikhfLWc1de.mp4" data-name="1717646343244501058-XP9a6pikhfLWc1de.mp4" data-id="27"
+       data-title="1717646343244501058-XP9a6pikhfLWc1de" tabindex="0">
+      <span class="ph">
+        <img src="1717646343244501058-XP9a6pikhfLWc1de.jpg" alt="1717646343244501058-XP9a6pikhfLWc1de" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1717646343244501058-XP9a6pikhfLWc1de</span>
+    </a>
+    <a class="tile" href="1905982990737412464-l5SwfHEhRZLfPrPT.mp4" data-src="1905982990737412464-l5SwfHEhRZLfPrPT.mp4" data-name="1905982990737412464-l5SwfHEhRZLfPrPT.mp4" data-id="28"
+       data-title="1905982990737412464-l5SwfHEhRZLfPrPT" tabindex="0">
+      <span class="ph">
+        <img src="1905982990737412464-l5SwfHEhRZLfPrPT.jpg" alt="1905982990737412464-l5SwfHEhRZLfPrPT" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1905982990737412464-l5SwfHEhRZLfPrPT</span>
+    </a>
+    <a class="tile" href="1754348629677019382--NYbp_Z6BIbvb_Mc.mp4" data-src="1754348629677019382--NYbp_Z6BIbvb_Mc.mp4" data-name="1754348629677019382--NYbp_Z6BIbvb_Mc.mp4" data-id="29"
+       data-title="1754348629677019382--NYbp_Z6BIbvb_Mc" tabindex="0">
+      <span class="ph">
+        <img src="1754348629677019382--NYbp_Z6BIbvb_Mc.jpg" alt="1754348629677019382--NYbp_Z6BIbvb_Mc" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1754348629677019382--NYbp_Z6BIbvb_Mc</span>
+    </a>
+    <a class="tile" href="1828773492688568369-2y-QyWwDyDcgj9xG.mp4" data-src="1828773492688568369-2y-QyWwDyDcgj9xG.mp4" data-name="1828773492688568369-2y-QyWwDyDcgj9xG.mp4" data-id="30"
+       data-title="1828773492688568369-2y-QyWwDyDcgj9xG" tabindex="0">
+      <span class="ph">
+        <img src="1828773492688568369-2y-QyWwDyDcgj9xG.jpg" alt="1828773492688568369-2y-QyWwDyDcgj9xG" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1828773492688568369-2y-QyWwDyDcgj9xG</span>
+    </a>
+    <a class="tile" href="1850857900463268197-UbhtMXN5016L20ib.mp4" data-src="1850857900463268197-UbhtMXN5016L20ib.mp4" data-name="1850857900463268197-UbhtMXN5016L20ib.mp4" data-id="31"
+       data-title="1850857900463268197-UbhtMXN5016L20ib" tabindex="0">
+      <span class="ph">
+        <img src="1850857900463268197-UbhtMXN5016L20ib.jpg" alt="1850857900463268197-UbhtMXN5016L20ib" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1850857900463268197-UbhtMXN5016L20ib</span>
+    </a>
+    <a class="tile" href="1942712540431069505-egNQkhQ6mUdWecOE.mp4" data-src="1942712540431069505-egNQkhQ6mUdWecOE.mp4" data-name="1942712540431069505-egNQkhQ6mUdWecOE.mp4" data-id="32"
+       data-title="1942712540431069505-egNQkhQ6mUdWecOE" tabindex="0">
+      <span class="ph">
+        <img src="1942712540431069505-egNQkhQ6mUdWecOE.jpg" alt="1942712540431069505-egNQkhQ6mUdWecOE" loading="lazy" decoding="async">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      </span>
+      <span class="cap">1942712540431069505-egNQkhQ6mUdWecOE</span>
+    </a>
+  </div>
+  <div class="empty" id="empty" hidden><b>没有匹配的视频</b>换个关键词试试</div>
+</main>
+
+<div class="player" id="player" hidden>
+  <div class="sheet">
+    <div class="phead">
+      <span class="ptitle" id="ptitle"></span>
+      <button class="x" id="close" type="button" aria-label="关闭">✕</button>
+    </div>
+    <video id="video" controls playsinline preload="metadata"></video>
+    <div class="actions">
+      <a class="btn primary" id="dl" download>⬇ 下载 MP4</a>
+      <a class="btn ghost" id="open" target="_blank" rel="noopener">在新标签打开</a>
+      <label class="chk" title="当前视频播完后，随机接着播还没播过的视频">
+        <input type="checkbox" id="cont" checked>连续播放
+      </label>
+    </div>
+    <div class="tip" id="tip" hidden></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var grid=document.getElementById('grid'),player=document.getElementById('player');
+  var video=document.getElementById('video'),ptitle=document.getElementById('ptitle');
+  var dl=document.getElementById('dl'),op=document.getElementById('open');
+  var tip=document.getElementById('tip'),dlBusy=false,dlLabel='⬇ 下载 MP4';
+  var cont=document.getElementById('cont');
+  var played={}, curTile=null;          // 已播过的视频（按 data-src 记），避免重复随机
+
+  function openPlayer(tile, keepPlaying){
+    var src=tile.getAttribute('data-src'),name=tile.getAttribute('data-name');
+    curTile=tile; played[src]=1;
+    video.src=src; video.load();
+    ptitle.textContent=tile.getAttribute('data-title')||tile.getAttribute('data-name');
+    dl.href=src; dl.setAttribute('download',name);   // 点下载仍按原文件名存盘
+    dl.textContent=dlLabel; dlBusy=false; tip.hidden=true;
+    op.href=src;
+    player.hidden=false; document.body.classList.add('lock');
+    var p=video.play(); if(p&&p.catch){p.catch(function(){});}
+    if(!keepPlaying) document.getElementById('close').focus();
+  }
+
+  // 连续播放：播完后从“还没播过”的视频里随机挑一个接着播
+  function playNextRandom(){
+    var tiles=Array.prototype.slice.call(grid.querySelectorAll('.tile'));
+    var rest=tiles.filter(function(t){ return !played[t.getAttribute('data-src')]; });
+    if(!rest.length){
+      tip.textContent='所有视频都播过一遍了，连续播放结束。';
+      tip.hidden=false;
+      return false;
+    }
+    var pick=rest[Math.floor(Math.random()*rest.length)];
+    openPlayer(pick,true);
+    return true;
+  }
+  video.addEventListener('ended',function(){
+    if(player.hidden) return;
+    if(cont && cont.checked) playNextRandom();
+    // 不勾选“连续播放”时：播完就停，保持当前画面
+  });
+
+  function closePlayer(){
+    try{video.pause();}catch(e){}
+    video.removeAttribute('src');
+    try{video.load();}catch(e){}
+    player.hidden=true; document.body.classList.remove('lock');
+  }
+
+  grid.addEventListener('click',function(ev){
+    var tile=ev.target.closest('.tile'); if(!tile) return;
+    if(ev.ctrlKey||ev.metaKey||ev.shiftKey) return;   // 允许新标签打开
+    ev.preventDefault(); openPlayer(tile);
+  });
+  grid.addEventListener('keydown',function(ev){
+    if(ev.key!=='Enter'&&ev.key!==' ') return;
+    var tile=ev.target.closest('.tile'); if(!tile) return;
+    ev.preventDefault(); openPlayer(tile);
+  });
+  document.getElementById('close').addEventListener('click',closePlayer);
+  player.addEventListener('click',function(ev){ if(ev.target===player) closePlayer(); });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Escape'&&!player.hidden) closePlayer();
+  });
+
+  // 下载：先把视频抓成 Blob 再存盘，这样浏览器弹的是“保存到本机”，
+  // 不会把 mp4 当视频直接在标签里播放（download 属性在移动端/跨域/本地文件常被忽略）。
+  var TIP_LOCAL='本地文件（file://）打开时，浏览器不允许网页直接保存视频，点了会变成播放。'
+              + '保存办法：在播放器里右键视频选「视频另存为…」；或者把整个目录发布到网站/网盘后再点下载，就能一键存盘。';
+  var TIP_FAIL='浏览器拒绝了这个下载请求（常见于跨域或服务器限制）。'
+             + '请用上方「在新标签打开」，在视频上右键选「视频另存为…」。';
+  dl.addEventListener('click',function(ev){
+    ev.preventDefault();                              // 任何情况下都不让页面跳去播视频
+    if(dlBusy) return;
+    if(location.protocol==='file:'){                  // 本地打开：给办法，不搞跳转
+      tip.textContent=TIP_LOCAL; tip.hidden=false;
+      return;
+    }
+    dlBusy=true; dl.textContent='正在准备下载…'; tip.hidden=true;
+    var url=dl.href,name=dl.getAttribute('download')||'video.mp4';
+    fetch(url,{cache:'no-store'}).then(function(res){
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      return res.blob();
+    }).then(function(blob){
+      var obj=URL.createObjectURL(blob);
+      var a=document.createElement('a');
+      a.href=obj; a.download=name; a.style.display='none';
+      document.body.appendChild(a); a.click();
+      setTimeout(function(){
+        URL.revokeObjectURL(obj);
+        if(a.parentNode) a.parentNode.removeChild(a);
+      },20000);
+      dl.textContent='⬇ 已开始下载';
+      setTimeout(function(){dl.textContent=dlLabel;},2500);
+    }).catch(function(){
+      tip.textContent=TIP_FAIL; tip.hidden=false;     // 跨域被拦：改用新标签+右键另存为
+    }).then(function(){dlBusy=false;});
+  });
+})();
+</script>
+</body>
+</html>
